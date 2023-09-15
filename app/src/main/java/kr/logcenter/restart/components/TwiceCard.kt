@@ -1,5 +1,6 @@
 package kr.logcenter.restart.components
 
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -38,13 +39,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -60,6 +64,8 @@ fun TwiceCard (title: String, image: Int, desc: String, comment: String,
 
    var showPopup = remember { mutableStateOf(false) }
    var showComment by remember {  mutableStateOf(false) }
+   val rotateAnimation by animateFloatAsState(targetValue = if (showComment) 180f else 0f,
+      label = "button icon animation"  )
 
    Card(modifier = Modifier
       .padding(4.dp)
@@ -98,22 +104,14 @@ fun TwiceCard (title: String, image: Int, desc: String, comment: String,
             modifier = Modifier.padding(end = 9.dp)
          ) {
             Text(text = title.uppercase(), fontSize = titleFontSize,
-               fontWeight = FontWeight(800) )
+               fontWeight = FontWeight(800), overflow = TextOverflow.Ellipsis )
             Text(text = desc, fontSize = bodyFontSize)
-            if(showComment) {
-               IconButton(onClick = { showComment = false}) {
-                  Icon(
-                     imageVector = Icons.Filled.KeyboardArrowUp,
-                     contentDescription = "to fold"
-                  )
-               }
-            } else {
-               IconButton(onClick = { showComment = true}) {
-                  Icon(
-                     imageVector = Icons.Filled.KeyboardArrowDown,
-                     contentDescription = "to expand"
-                  )
-               }
+            IconButton(onClick = { showComment = !showComment},
+               modifier = Modifier.alpha(0.4f).weight(1f).rotate(rotateAnimation)) {
+               Icon(
+                  imageVector = Icons.Filled.KeyboardArrowDown,
+                  contentDescription = "to fold"
+               )
             }
          }
       }
@@ -127,11 +125,12 @@ fun TwiceCard (title: String, image: Int, desc: String, comment: String,
    }
    if(showComment) {
       Box(modifier = Modifier
-         .padding(horizontal = 4.dp, )
+         .padding(horizontal = 4.dp,)
          .fillMaxWidth()
          .clip(RoundedCornerShape(8.dp)) // 이거 안하면 삐져 나옴
          .background(MaterialTheme.colorScheme.surface)
-         .border(1.dp,  Color.White, shape = RoundedCornerShape(8.dp),
+         .border(
+            1.dp, Color.White, shape = RoundedCornerShape(8.dp),
          )
       ){
          Text(text = comment, fontSize = bodyFontSize,
