@@ -27,7 +27,6 @@ fun Greeting(
       Button(
          onClick = { vm.onClick("안드로이드 refactory") },
          colors = ButtonDefaults.filledTonalButtonColors(MaterialTheme.colorScheme.primary)
-
       ) {
          Text(text = "submit button".uppercase(),
             color = MaterialTheme.colorScheme.onPrimary)
