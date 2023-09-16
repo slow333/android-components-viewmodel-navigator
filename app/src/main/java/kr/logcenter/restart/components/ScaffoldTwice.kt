@@ -117,6 +117,10 @@ fun DropDownMenu(navController: NavController) {
             text = { Text("Login") },
             onClick = { navController.navigate(route = Screen.Login.route) }
          )
+         DropdownMenuItem(
+            text = { Text("Detail") },
+            onClick = { navController.navigate(route = Screen.Detail.route) }
+         )
       }
    }
 }

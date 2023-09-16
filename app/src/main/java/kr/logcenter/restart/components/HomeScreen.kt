@@ -28,19 +28,34 @@ fun HomeScreen(navController: NavController) {
          verticalArrangement = Arrangement.spacedBy(26.dp, alignment = Alignment.CenterVertically),
          horizontalAlignment = Alignment.CenterHorizontally
       ) {
-         OutlinedButton(onClick = { navController.navigate(route = Screen.Home.route) },
+         OutlinedButton(onClick = { navController.navigate(route = Screen.Home.route){
+            popUpTo(Screen.Home.route) {inclusive = true}
+         } },
          ) {
             Text(text = "Home")
          }
-         OutlinedButton(onClick = { navController.navigate(route = Screen.Blackpink.route) },
+         OutlinedButton(onClick = { navController.navigate(route = Screen.Blackpink.route){
+            popUpTo(Screen.Blackpink.route) {inclusive = true}
+         } },
          ) {
             Text(text = "Twice")
          }
-         OutlinedButton(onClick = { navController.navigate(route = Screen.Login.route) },
+         OutlinedButton(onClick = { navController.navigate(route = Screen.Login.route){
+            popUpTo(Screen.Login.route) {inclusive = true}
+         } },
          ) {
             Text(text = "Login")
          }
+         OutlinedButton(
+            onClick = {
+               navController.navigate(route = Screen.Detail.passIdAndName(21, "twice"))
+            },
+         ) {
+            Text(text = "Detail")
+         }
       }
+
+
    }
 }
 
