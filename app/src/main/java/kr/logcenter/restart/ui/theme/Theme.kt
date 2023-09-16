@@ -107,6 +107,7 @@ fun RestartTheme(
    MaterialTheme(
       colorScheme = colorScheme,
       typography = replyTypography,
-      content = content
+      content = content,
+      shapes = replyShapes
    )
 }

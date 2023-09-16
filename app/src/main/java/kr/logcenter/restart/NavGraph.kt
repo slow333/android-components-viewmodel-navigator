@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import kr.logcenter.restart.components.Detail
+import kr.logcenter.restart.components.GoogleButton
 import kr.logcenter.restart.components.HomeScreen
 import kr.logcenter.restart.components.Login
 import kr.logcenter.restart.components.TwiceCardList
@@ -20,6 +21,7 @@ fun SetupNavGraph( navController: NavHostController
       composable(route = Screen.Home.route ) { HomeScreen(navController) }
       composable(route = Screen.Login.route ) { Login(navController) }
       composable(route = Screen.Blackpink.route ) { TwiceCardList(twiceList, navController) }
+      composable(route = Screen.GoogleBtn.route ) { GoogleButton(onClick = { null }) }
       composable(route = Screen.Detail.route,
          arguments = listOf(
             navArgument(DETAIL_ARG_KEY) { type = NavType.IntType },

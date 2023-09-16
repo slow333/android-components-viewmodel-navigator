@@ -1,5 +1,6 @@
 package kr.logcenter.restart.components
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -23,7 +24,8 @@ fun HomeScreen(navController: NavController) {
 
    ScaffoldTwice(navController = navController) {
       Column(
-         modifier = Modifier.fillMaxSize()
+         modifier = Modifier
+            .fillMaxSize()
             .background(MaterialTheme.colorScheme.surface),
          verticalArrangement = Arrangement.spacedBy(26.dp, alignment = Alignment.CenterVertically),
          horizontalAlignment = Alignment.CenterHorizontally
@@ -31,28 +33,25 @@ fun HomeScreen(navController: NavController) {
          OutlinedButton(onClick = { navController.navigate(route = Screen.Home.route){
             popUpTo(Screen.Home.route) {inclusive = true}
          } },
-         ) {
-            Text(text = "Home")
-         }
+         ) { Text(text = "Home") }
          OutlinedButton(onClick = { navController.navigate(route = Screen.Blackpink.route){
             popUpTo(Screen.Blackpink.route) {inclusive = true}
          } },
-         ) {
-            Text(text = "Twice")
-         }
+         ) { Text(text = "Twice") }
          OutlinedButton(onClick = { navController.navigate(route = Screen.Login.route){
-            popUpTo(Screen.Login.route) {inclusive = true}
-         } },
-         ) {
-            Text(text = "Login")
-         }
+            popUpTo(Screen.Login.route) {inclusive = true} } },
+         ) { Text(text = "Login") }
+         OutlinedButton(onClick = { navController.navigate(route = Screen.GoogleBtn.route){
+            popUpTo(Screen.GoogleBtn.route) {inclusive = true} } },
+         ) { Text(text = "Google Button") }
+         GoogleButton(onClick = {
+            Log.d("구글버튼", "Clicked by google 버튼")
+         })
          OutlinedButton(
             onClick = {
                navController.navigate(route = Screen.Detail.passIdAndName(21, "twice"))
             },
-         ) {
-            Text(text = "Detail")
-         }
+         ) { Text(text = "Detail") }
       }
 
 
