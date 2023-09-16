@@ -119,7 +119,7 @@ fun DropDownMenu(navController: NavController) {
          )
          DropdownMenuItem(
             text = { Text("Detail") },
-            onClick = { navController.navigate(route = Screen.Detail.route) }
+            onClick = { navController.navigate(route = Screen.DetailReceiveArgs.passIdAndName(25, "from scaffold")) }
          )
       }
    }

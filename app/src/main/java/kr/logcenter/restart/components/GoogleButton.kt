@@ -1,19 +1,14 @@
 package kr.logcenter.restart.components
 
-import android.graphics.drawable.shapes.Shape
 import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.Easing
 import androidx.compose.animation.core.FastOutLinearInEasing
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -41,7 +36,7 @@ import kr.logcenter.restart.ui.theme.replyShapes
 fun GoogleButton(
    text: String = "구글에 가입하기",
    loadingText: String = "구글에 가입하는 중...",
-   google_icon : Painter = painterResource(id = R.drawable.google__g__logo_svg),
+   googleIcon : Painter = painterResource(id = R.drawable.google__g__logo_svg),
    space: Dp = 4.dp,
    shape: CornerBasedShape = replyShapes.large,
    borderColor: Color = MaterialTheme.colorScheme.onSecondary,
@@ -69,7 +64,7 @@ fun GoogleButton(
          horizontalArrangement = Arrangement.Center,
          verticalAlignment = Alignment.CenterVertically) {
          Icon(
-            google_icon,
+            googleIcon,
             contentDescription = "g icon",
             modifier = Modifier.size(24.dp),
             tint = Color.Unspecified
