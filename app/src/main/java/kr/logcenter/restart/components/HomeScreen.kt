@@ -35,38 +35,25 @@ fun HomeScreen(navController: NavController) {
          verticalArrangement = Arrangement.spacedBy(26.dp, alignment = Alignment.CenterVertically),
          horizontalAlignment = Alignment.CenterHorizontally
       ) {
-         OutlinedButton(onClick = { navController.navigate(route = Screen.Home.route){
-            popUpTo(Screen.Home.route) {inclusive = true}
-         } },
+         OutlinedButton(onClick = { navController.navigate(route = Screen.Home.route) },
             contentPadding = PaddingValues(),
             modifier = Modifier.width(160.dp).defaultMinSize(minWidth = 1.dp, minHeight = 1.dp),
-//
          ) { Text(text = "FGHIJKLMNO", modifier = Modifier.padding(vertical = 0.dp)) }
-         OutlinedButton(onClick = { navController.navigate(route = Screen.Blackpink.route){
-            popUpTo(Screen.Blackpink.route) {inclusive = true}
-         } },
+         OutlinedButton(onClick = { navController.navigate(route = Screen.Blackpink.route) },
          ) { Text(text = "Twice") }
          OutlinedButton(onClick = { navController.navigate(route = Screen.Login.route){
             popUpTo(Screen.Login.route) {inclusive = true} } },
          ) { Text(text = "Login") }
-         OutlinedButton(onClick = { navController.navigate(route = Screen.GoogleBtn.route){
-            popUpTo(Screen.GoogleBtn.route) {inclusive = true} } },
-         ) { Text(text = "Google Button") }
-         GoogleButton(onClick = {
-            Log.d("구글버튼", "Clicked by google 버튼")
-         })
+
          OutlinedButton(
             onClick = {
                navController.navigate(route = Screen.Detail.passIdAndName(21, "twice"))
             },
          ) { Text(text = "Detail") }
+
+         GoogleButton(onClick = {
+            Log.d("구글버튼", "Clicked by google 버튼")
+         })
       }
-
-
    }
-}
-
-@Composable
-fun OutLinedButton(onClick: () -> Unit, content: () -> Unit) {
-
 }
