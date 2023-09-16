@@ -6,7 +6,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -33,7 +38,10 @@ fun HomeScreen(navController: NavController) {
          OutlinedButton(onClick = { navController.navigate(route = Screen.Home.route){
             popUpTo(Screen.Home.route) {inclusive = true}
          } },
-         ) { Text(text = "Home") }
+            contentPadding = PaddingValues(),
+            modifier = Modifier.width(160.dp).defaultMinSize(minWidth = 1.dp, minHeight = 1.dp),
+//
+         ) { Text(text = "FGHIJKLMNO", modifier = Modifier.padding(vertical = 0.dp)) }
          OutlinedButton(onClick = { navController.navigate(route = Screen.Blackpink.route){
             popUpTo(Screen.Blackpink.route) {inclusive = true}
          } },
