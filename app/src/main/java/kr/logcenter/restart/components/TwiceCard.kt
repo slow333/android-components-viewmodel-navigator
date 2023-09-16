@@ -53,6 +53,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.navigation.NavController
 import kr.logcenter.restart.R
 import kr.logcenter.restart.data.Twice
 import kr.logcenter.restart.data.twiceList
@@ -107,7 +108,10 @@ fun TwiceCard (title: String, image: Int, desc: String, comment: String,
                fontWeight = FontWeight(800), overflow = TextOverflow.Ellipsis )
             Text(text = desc, fontSize = bodyFontSize)
             IconButton(onClick = { showComment = !showComment},
-               modifier = Modifier.alpha(0.4f).weight(1f).rotate(rotateAnimation)) {
+               modifier = Modifier
+                  .alpha(0.4f)
+                  .weight(1f)
+                  .rotate(rotateAnimation)) {
                Icon(
                   imageVector = Icons.Filled.KeyboardArrowDown,
                   contentDescription = "to fold"
@@ -141,10 +145,12 @@ fun TwiceCard (title: String, image: Int, desc: String, comment: String,
 }
 
 @Composable
-fun TwiceCardList(twList: List<Twice> = twiceList) {
-   LazyColumn(contentPadding = PaddingValues(horizontal = 5.dp, vertical = 5.dp)) {
-      items(twList) {item ->
-         TwiceCard(title = item.title, image = item.image, desc = item.description, comment = item.comment)
+fun TwiceCardList(twList: List<Twice>, navController: NavController) {
+   ScaffoldTwice(navController = navController) {
+      LazyColumn(contentPadding = PaddingValues(horizontal = 5.dp, vertical = 5.dp)) {
+         items(twList) {item ->
+            TwiceCard(title = item.title, image = item.image, desc = item.description, comment = item.comment)
+         }
       }
    }
 }

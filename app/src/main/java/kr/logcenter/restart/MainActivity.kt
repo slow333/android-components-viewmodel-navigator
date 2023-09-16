@@ -7,36 +7,25 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import kr.logcenter.restart.components.ScaffoldTwice
-import kr.logcenter.restart.components.TwiceCardList
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import kr.logcenter.restart.ui.theme.RestartTheme
 
 class MainActivity : ComponentActivity() {
+
+   private lateinit var navController: NavHostController
    override fun onCreate(savedInstanceState: Bundle?) {
       super.onCreate(savedInstanceState)
       setContent {
          RestartTheme {
-            // A surface container using the 'background' color from the theme
             Surface(
                modifier = Modifier.fillMaxSize(),
                color = MaterialTheme.colorScheme.background
             ) {
-               ScaffoldTwice {
-                  TwiceCardList()
-               }
+               navController = rememberNavController()
+               SetupNavGraph(navController = navController)
             }
          }
       }
    }
 }
-
-
-
-
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//   RestartTheme {
-//      Greeting("Android")
-//   }
-//}

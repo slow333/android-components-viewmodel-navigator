@@ -5,15 +5,20 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FabPosition
@@ -33,41 +38,35 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import kr.logcenter.restart.Screen
 
 @SuppressLint("RememberReturnType", "UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScaffoldTwice(content: @Composable () -> Unit, ) {
+fun ScaffoldTwice(navController: NavController, content: @Composable () -> Unit, ) {
    var name by remember { mutableStateOf("") }
 
    Scaffold(
       containerColor  = MaterialTheme.colorScheme.secondary,
+
       topBar = {
          CenterAlignedTopAppBar(
             title = {
                Row(verticalAlignment = Alignment.CenterVertically,
                   modifier = Modifier.padding(start = 20.dp)) {
-                  Text("Twice & BlackPink",
-                     fontSize = MaterialTheme.typography.titleSmall.fontSize)
-                  OutlinedTextField(
-                     value = name, onValueChange = { name = it},
-//                     label = {Text("NAME", fontSize = 10.sp)},
-                     placeholder = { Text("뭔가 적으세요", fontSize = MaterialTheme.typography.labelSmall.fontSize)},
-                     modifier = Modifier.padding(start = 12.dp).height(50.dp),
-                     textStyle = TextStyle(fontSize = 16.sp),
-                     leadingIcon = { Icon( Icons.Filled.Search,
-                        tint = Color.White, contentDescription = "no"
-                     )}
-                  )
+                  Text("TW/BP",
+                     fontSize = MaterialTheme.typography.titleSmall.fontSize,
+                  modifier = Modifier.padding(end = 4.dp))
+                  TxField()
                }
             },
             navigationIcon = {
-               IconButton(
-                  onClick = { /* "Open nav drawer" */ }
-               ) { Icon(Icons.Filled.Menu, contentDescription = "Menu")  }
+               DropDownMenu(navController = navController)
             },
 //            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(MaterialTheme.colorScheme.onPrimaryContainer)
          )
@@ -88,9 +87,36 @@ fun ScaffoldTwice(content: @Composable () -> Unit, ) {
    }
 }
 
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//      ScaffoldTwice()
-//}
+@Composable
+fun DropDownMenu(navController: NavController) {
+   val context = LocalContext.current
+   var expanded by remember { mutableStateOf(false) }
+
+   Box(
+      modifier = Modifier
+//         .fillMaxWidth()
+         .wrapContentSize(Alignment.TopStart)
+   ) {
+      IconButton(onClick = { expanded = !expanded }) {
+         Icon( imageVector = Icons.Default.Menu, contentDescription = "More" )
+      }
+
+      DropdownMenu(
+         expanded = expanded,
+         onDismissRequest = { expanded = false }
+      ) {
+         DropdownMenuItem(
+            text = { Text("Home") },
+            onClick = { navController.navigate(route = Screen.Home.route) }
+         )
+         DropdownMenuItem(
+            text = { Text("Twice") },
+            onClick = { navController.navigate(route = Screen.Blackpink.route) }
+         )
+         DropdownMenuItem(
+            text = { Text("Login") },
+            onClick = { navController.navigate(route = Screen.Login.route) }
+         )
+      }
+   }
+}
