@@ -26,7 +26,7 @@ fun CustomTextField(
    modifier: Modifier = Modifier,
    leadingIcon: (@Composable () -> Unit)? = null,
    trailingIcon: (@Composable () -> Unit)? = null,
-   placeholderText: String = "Placeholder",
+   placeholderText: String = "높이 조정한 textfield",
    fontSize: TextUnit = MaterialTheme.typography.bodyMedium.fontSize
 ) {
    var text by rememberSaveable { mutableStateOf("") }

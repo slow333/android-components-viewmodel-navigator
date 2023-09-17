@@ -18,5 +18,8 @@ fun NoteForApp() {
       Text("Coil in Jetpack Compose", fontSize = MaterialTheme.typography.titleMedium.fontSize)
 
       Text(text = stringResource(id = R.string.coil_apply))
+
+      Text(text = "textfield 높이 조정")
+      Text(text = "수동 조정을 하려면 별도로 많은 것을 해야함...\n 건드리지 말라는 뜻 같음")
    }
 }

@@ -23,6 +23,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -37,6 +38,15 @@ fun HomeScreen(navController: NavController) {
 
    ScaffoldTwice(navController = navController) {
       ColumnLayout {
+         GradientButton(text = "gradient button",
+            textColor = MaterialTheme.colorScheme.onPrimary,
+            gradient = Brush.horizontalGradient(
+               colors = listOf(
+                  MaterialTheme.colorScheme.inversePrimary,
+                  MaterialTheme.colorScheme.onSecondaryContainer
+               )
+            ),
+            onClick = { })
          PasswordTextField()
          // button의 기본 높이를 조정, contentPadding, minWidth, minHeight 조정
          OutlinedButton(onClick = { navController.navigate(route = Screen.Home.route) },
