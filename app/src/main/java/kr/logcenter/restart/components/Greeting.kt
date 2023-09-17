@@ -11,15 +11,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import kr.logcenter.restart.components.layoutAndScaffold.ColumnLayout
 
 @Composable
 fun Greeting(
    vm: MyViewModel,
    modifier: Modifier = Modifier
 ) {
-   Column(verticalArrangement = Arrangement.Center,
-      horizontalAlignment = Alignment.CenterHorizontally
-   ) {
+   ColumnLayout {
       Text(
          text = "Hello ${vm.text.value}!",
          modifier = modifier.padding(bottom = 10.dp)

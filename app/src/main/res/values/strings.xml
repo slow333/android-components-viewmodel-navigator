@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">restart</string>
+    <string name="app_name" translatable="false">restart</string>
+    <string name="coil_apply" translatable="false">
+        build gradle에 implement 추가 : implementation("io.coil-kt:coil:2.4.0") -> git에서 최신버젼 확인
+        AndroidManifest 추가 : <![CDATA[ <application android:usesCleartextTraffic="true" /> ]]>
+
+    </string>
 </resources>

@@ -18,29 +18,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import kr.logcenter.restart.Screen
+import kr.logcenter.restart.components.layoutAndScaffold.ColumnLayout
+import kr.logcenter.restart.components.layoutAndScaffold.ScaffoldTwice
 
 @Composable
 fun HomeScreen(navController: NavController) {
 
    ScaffoldTwice(navController = navController) {
-      Column(
-         modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.surface),
-         verticalArrangement = Arrangement.spacedBy(26.dp, alignment = Alignment.CenterVertically),
-         horizontalAlignment = Alignment.CenterHorizontally
-      ) {
+      ColumnLayout {
          // button의 기본 높이를 조정, contentPadding, minWidth, minHeight 조정
          OutlinedButton(onClick = { navController.navigate(route = Screen.Home.route) },
             contentPadding = PaddingValues(),
-            modifier = Modifier.width(160.dp).defaultMinSize(minWidth = 1.dp, minHeight = 1.dp),
+            modifier = Modifier
+               .width(160.dp)
+               .defaultMinSize(minWidth = 1.dp, minHeight = 1.dp),
          ) { Text(text = "HOME", modifier = Modifier.padding(vertical = 0.dp)) }
 
          OutlinedButton(onClick = { navController.navigate(route = Screen.Blackpink.route) },
          ) { Text(text = "Twice") }
 
+         OutlinedButton(onClick = { navController.navigate(route = Screen.NoteForApp.route) },
+         ) { Text(text = "Note for App") }
+
          OutlinedButton(onClick = { navController.navigate(route = Screen.Login.route){
-            popUpTo(Screen.Login.route) {inclusive = true} } },
+            popUpTo(Screen.Login.route) { inclusive = true } } },
          ) { Text(text = "Login") }
 
          OutlinedButton(

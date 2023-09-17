@@ -8,6 +8,7 @@ sealed class Screen(val route: String) {
    object Login : Screen(route = "login_screen")
    object Blackpink : Screen(route = "blackpink_screen")
    object GoogleBtn : Screen(route = "google_button")
+   object NoteForApp : Screen(route = "note_for_app")
    object DetailReceiveArgs : Screen(route = "detail_screen?id={$DETAIL_ARG_KEY}&name={$DETAIL_ARG_NAME}") {
 //   object Detail : Screen(route = "detail_screen/{$DETAIL_ARG_KEY}/${DETAIL_ARG_NAME}") {
 /*      fun passId(id: Int): String {
