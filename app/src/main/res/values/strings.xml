@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name" translatable="false">restart</string>
+    <string name="description" translatable="false">coil images</string>
+    <string name="error" translatable="false">이미지 받는 중 애러 발생</string>
     <string name="coil_apply" translatable="false">
-        build gradle에 implement 추가 : implementation("io.coil-kt:coil:2.4.0") -> git에서 최신버젼 확인
-        AndroidManifest 추가 : <![CDATA[ <application android:usesCleartextTraffic="true" /> ]]>
-
+        <ul>
+            <li>build gradle에 implement 추가 : implementation("io.coil-kt:coil:2.4.0") -> git에서 최신버젼 확인 </li>
+            <li>️ AndroidManifest 추가 : <![CDATA[ <application android:usesCleartextTraffic="true" /> ]]> </li>
+            <li> 이미지 url이 정확한지 확인 해야함.. 브라우져에서는 보이는데 불러 오면 안보이는 경우가 있음 ????</li>
+        </ul>
     </string>
 </resources>

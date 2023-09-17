@@ -5,7 +5,7 @@ const val DETAIL_ARG_NAME = "name"
 
 sealed class Screen(val route: String) {
    object Home : Screen(route = "home_screen")
-   object Login : Screen(route = "login_screen")
+   object CoilImage : Screen(route = "coil_image")
    object Blackpink : Screen(route = "blackpink_screen")
    object GoogleBtn : Screen(route = "google_button")
    object NoteForApp : Screen(route = "note_for_app")

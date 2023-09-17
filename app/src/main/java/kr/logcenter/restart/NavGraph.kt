@@ -6,6 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import kr.logcenter.restart.components.CoilImage
 import kr.logcenter.restart.components.DetailReceiveArgs
 import kr.logcenter.restart.components.GoogleButton
 import kr.logcenter.restart.components.HomeScreen
@@ -19,7 +20,7 @@ fun SetupNavGraph( navController: NavHostController
 ) {
    NavHost(navController = navController, startDestination = Screen.Home.route){
       composable(route = Screen.Home.route ) { HomeScreen(navController) }
-      composable(route = Screen.Login.route ) { Login(navController) }
+      composable(route = Screen.CoilImage.route ) { CoilImage() }
       composable(route = Screen.Blackpink.route ) { TwiceCardList(twiceList, navController) }
       composable(route = Screen.GoogleBtn.route ) { GoogleButton(onClick = { null }) }
       composable(route = Screen.NoteForApp.route ) { NoteForApp() }

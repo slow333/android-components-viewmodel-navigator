@@ -18,7 +18,7 @@ fun ColumnLayout(content: @Composable () -> Unit) {
          .fillMaxSize()
          .background(MaterialTheme.colorScheme.surface)
          .padding(horizontal = 10.dp),
-      verticalArrangement = Arrangement.spacedBy(26.dp, alignment = Alignment.CenterVertically),
+      verticalArrangement = Arrangement.spacedBy(10.dp, alignment = Alignment.CenterVertically),
       horizontalAlignment = Alignment.CenterHorizontally
    ) {
       content()

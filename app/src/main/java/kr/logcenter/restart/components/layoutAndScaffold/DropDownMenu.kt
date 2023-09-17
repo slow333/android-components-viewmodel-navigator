@@ -47,8 +47,8 @@ fun DropDownMenu(navController: NavController) {
             onClick = { navController.navigate(route = Screen.Blackpink.route) }
          )
          DropdownMenuItem(
-            text = { Text("Login") },
-            onClick = { navController.navigate(route = Screen.Login.route) }
+            text = { Text("Coil Image") },
+            onClick = { navController.navigate(route = Screen.CoilImage.route) }
          )
          DropdownMenuItem(
             text = { Text("Note for app") },
